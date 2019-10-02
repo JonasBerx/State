@@ -23,4 +23,24 @@ public class PartyArticle {
     public void setState(IState state) {
         this.state = state;
     }
+
+    public IState getDamagedState() {
+        return DamagedState;
+    }
+
+    public IState getDeletedState() {
+        return DeletedState;
+    }
+
+    public IState getLendableState() {
+        return LendableState;
+    }
+
+    public IState getLendedState() {
+        return LendedState;
+    }
+
+    public IState getState() {
+        return state;
+    }
 }
