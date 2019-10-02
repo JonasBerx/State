@@ -18,7 +18,7 @@ public class DamagedState implements IState {
     }
 
     @Override
-    public void Return() {
+    public void Return(Boolean b) {
 
     }
 

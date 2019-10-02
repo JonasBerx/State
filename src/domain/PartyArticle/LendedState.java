@@ -3,7 +3,7 @@ package domain.PartyArticle;
 public class LendedState implements IState {
     private PartyArticle partyArticle;
 
-        public LendedState(PartyArticle partyArticle) {
+    public LendedState(PartyArticle partyArticle) {
         this.partyArticle = partyArticle;
     }
 
@@ -18,7 +18,12 @@ public class LendedState implements IState {
     }
 
     @Override
-    public void Return() {
+    public void Return(Boolean beschadigd) {
+        if (beschadigd) {
+            partyArticle.setState(partyArticle.getDamagedState());
+        } else {
+            partyArticle.setState(partyArticle.getLendableState());
+        }
 
     }
 

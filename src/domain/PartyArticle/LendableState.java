@@ -20,7 +20,7 @@ public class LendableState implements IState {
     }
 
     @Override
-    public void Return() {
+    public void Return(Boolean beschadigd) {
         System.out.println("je kan geen artikel terugbrengen dat je nog niet geleend hebt!");
     }
 
