@@ -1,4 +1,24 @@
 package domain.PartyArticle;
 
-public class DeletedState {
+public class DeletedState implements IState {
+
+    @Override
+    public void Delete() {
+
+    }
+
+    @Override
+    public void Lend() {
+
+    }
+
+    @Override
+    public void Return() {
+
+    }
+
+    @Override
+    public void Repair() {
+
+    }
 }
