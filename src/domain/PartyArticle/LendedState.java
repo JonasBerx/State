@@ -1,6 +1,12 @@
 package domain.PartyArticle;
 
 public class LendedState implements IState {
+    private PartyArticle partyArticle;
+
+        public LendedState(PartyArticle partyArticle) {
+        this.partyArticle = partyArticle;
+    }
+
     @Override
     public void Delete() {
 

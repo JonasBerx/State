@@ -1,6 +1,12 @@
 package domain.PartyArticle;
 
 public class DamagedState implements IState {
+    private PartyArticle partyArticle;
+
+    public DamagedState(PartyArticle partyArticle) {
+        this.partyArticle = partyArticle;
+    }
+
     @Override
     public void Delete() {
 
