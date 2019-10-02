@@ -9,12 +9,12 @@ public class LendedState implements IState {
 
     @Override
     public void Delete() {
-
+        System.out.println("kan niet deleten wanneer uitgeleend");
     }
 
     @Override
     public void Lend() {
-
+        System.out.println("je bent het boek al aan het lenen");
     }
 
     @Override
@@ -29,6 +29,6 @@ public class LendedState implements IState {
 
     @Override
     public void Repair() {
-
+        System.out.println("boek kan nog niet gerepareed worden want het is nog niet binnengebracht");
     }
 }
