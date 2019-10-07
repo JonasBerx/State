@@ -6,20 +6,24 @@ public class PartyArticle {
     private IState LendableState;
     private IState LendedState;
 
+    //  price??
+    private double price;
 
+    //current state
     private IState state;
     //int count = 0;
 
 
-    public PartyArticle() {
+    public PartyArticle(double prijs) {
         DamagedState = new DamagedState(this);
         DeletedState = new DeletedState(this);
         LendableState = new LendableState(this);
         LendedState = new LendedState(this);
         this.state = LendableState;
+        this.price = prijs;
     }
 
-
+    //   moet nog ergens een return voor de boete prijs
     public void setState(IState state) {
         this.state = state;
     }
@@ -43,4 +47,5 @@ public class PartyArticle {
     public IState getState() {
         return state;
     }
+
 }
