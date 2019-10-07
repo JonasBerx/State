@@ -1,4 +1,4 @@
-package ui;
+package domain.PartyArticle;
 
 import domain.PartyArticle.LendableState;
 import domain.PartyArticle.PartyArticle;

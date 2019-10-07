@@ -1,6 +1,6 @@
 package ui;
 
-import domain.FunForRent;
+import domain.PartyArticle.FunForRent;
 
 import javax.swing.*;
 
