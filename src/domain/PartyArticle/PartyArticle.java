@@ -8,19 +8,27 @@ public class PartyArticle {
 
     //  price??
     private double price;
-
-    //current state
+    private String naam;    //current state
     private IState state;
     //int count = 0;
 
 
-    public PartyArticle(double prijs) {
+    public PartyArticle(double prijs, String naam) {
         DamagedState = new DamagedState(this);
         DeletedState = new DeletedState(this);
         LendableState = new LendableState(this);
         LendedState = new LendedState(this);
         this.state = LendableState;
         this.price = prijs;
+        this.naam = naam;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getNaam() {
+        return naam;
     }
 
     //   moet nog ergens een return voor de boete prijs
