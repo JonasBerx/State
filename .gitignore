@@ -1,4 +1,4 @@
-.idea
+.idea/*
 .directory
 out
-!*/.idea/libraries
+!/.idea/libraries/
