@@ -14,14 +14,16 @@ public class LendableState implements IState {
     }
 
     @Override
-    public void Lend() {
+    public double Lend() {
         System.out.println("je wilt het boek uitlenen");
         partyArticle.setState(partyArticle.getLendedState());
+        return 0;
     }
 
     @Override
-    public void Return(Boolean beschadigd) {
+    public double Return(Boolean beschadigd) {
         System.out.println("je kan geen artikel terugbrengen dat je nog niet geleend hebt!");
+        return 0;
     }
 
     @Override

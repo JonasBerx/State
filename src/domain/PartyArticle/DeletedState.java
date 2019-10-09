@@ -13,13 +13,15 @@ public class DeletedState implements IState {
     }
 
     @Override
-    public void Lend() {
+    public double Lend() {
         System.out.println("het is verwijdert dus je kan het niet lenen");
+        return 0;
     }
 
     @Override
-    public void Return(Boolean b) {
+    public double Return(Boolean b) {
         System.out.println("je kan iets verwijdert niet terugbrengen");
+        return 0;
     }
 
     @Override

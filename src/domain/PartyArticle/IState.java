@@ -2,8 +2,8 @@ package domain.PartyArticle;
 
 public interface IState {
     void Delete();
-    void Lend();
+    double Lend();
 
-    void Return(Boolean beschadigd);
+    double Return(Boolean beschadigd);
     void Repair();
 }

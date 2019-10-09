@@ -26,8 +26,8 @@ public class FunForRent {
         return get(name).getLendableState().Lend();
     }
 
-    public double brengTerug(String name) {
-        return get(name).getLendedState().Return();
+    public double brengTerug(String name, boolean damage) {
+        return get(name).getLendedState().Return(damage);
     }
 
     public void repareer(String name) {

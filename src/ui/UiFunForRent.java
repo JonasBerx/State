@@ -45,7 +45,8 @@ public class UiFunForRent {
 
     private void brengTerug() {
         String name = JOptionPane.showInputDialog("Enter the name of the party item you want to return");
-        JOptionPane.showMessageDialog(null, this.funForRent.brengTerug(name));
+        String damage = JOptionPane.showInputDialog("Is it damaged?");
+        JOptionPane.showMessageDialog(null, this.funForRent.brengTerug(name,damage.equals("1")));
     }
 
     private void toon() {

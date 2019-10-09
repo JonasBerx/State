@@ -14,13 +14,15 @@ public class DamagedState implements IState {
     }
 
     @Override
-    public void Lend() {
+    public double Lend() {
         System.out.println("je kan het niet lenen wanneer het beschadigd is");
+        return 0;
     }
 
     @Override
-    public void Return(Boolean b) {
+    public double Return(Boolean b) {
         System.out.println("je kan niet terugbrengen want het is al terug");
+        return 0;
     }
 
     @Override

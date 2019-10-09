@@ -13,18 +13,20 @@ public class LendedState implements IState {
     }
 
     @Override
-    public void Lend() {
+    public double Lend() {
         System.out.println("je bent het boek al aan het lenen");
+        return 0;
     }
 
     @Override
-    public void Return(Boolean beschadigd) {
+    public double Return(Boolean beschadigd) {
         if (beschadigd) {
             partyArticle.setState(partyArticle.getDamagedState());
         } else {
             partyArticle.setState(partyArticle.getLendableState());
         }
 
+        return 0;
     }
 
     @Override
