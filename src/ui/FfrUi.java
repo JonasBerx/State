@@ -16,6 +16,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -116,6 +117,17 @@ public class FfrUi extends Application {
 
         var articles = FXCollections.observableList(ffr.getAll());
         var articlesCombo = new ComboBox<PartyArticle>(articles);
+        articlesCombo.setConverter(new StringConverter<PartyArticle>() {
+            @Override
+            public String toString(PartyArticle partyArticle) {
+                return partyArticle == null ? "" : partyArticle.getName();
+            }
+
+            @Override
+            public PartyArticle fromString(String s) {
+                return null;
+            }
+        });
         rootChildren.add(articlesCombo);
 
         var actionBtns = new LinkedList<Button>();
