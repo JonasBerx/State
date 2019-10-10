@@ -157,7 +157,12 @@ public class FfrUi extends Application {
         actionBtns.add(jfxHelpers.button("Lend", actionEvent -> {
             var article = articlesCombo.getValue();
             try {
-                article.lend();
+                double price = article.lend();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Product price");
+                alert.setHeaderText("Price to lend product");
+                alert.setContentText(String.format("Price: €%f", price));
+                alert.showAndWait();
             } catch (IllegalPaState ex) {
                 illegalPaStateExceptionHandler(ex);
             }
@@ -175,7 +180,12 @@ public class FfrUi extends Application {
         actionBtns.add(jfxHelpers.button("Return damaged", actionEvent -> {
             var article = articlesCombo.getValue();
             try {
-                article.bringBack(true);
+                double damageCompensationPrice = article.bringBack(true);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Damage compensation price");
+                alert.setHeaderText("Compensation price for damaged product");
+                alert.setContentText(String.format("Price: €%f", damageCompensationPrice));
+                alert.showAndWait();
             } catch (IllegalPaState ex) {
                 illegalPaStateExceptionHandler(ex);
             }
