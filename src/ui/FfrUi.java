@@ -5,23 +5,16 @@ import domain.IllegalPaState;
 import domain.PartyArticle.FunForRent;
 import domain.PartyArticle.PartyArticle;
 import javafx.application.Application;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.LinkedList;
-import java.util.function.Consumer;
 
 public class FfrUi extends Application {
     private FunForRent ffr = new FunForRent();
@@ -116,8 +109,8 @@ public class FfrUi extends Application {
         rootChildren.add(jfxHelpers.title("Edit articles"));
 
         var articles = FXCollections.observableList(ffr.getAll());
-        var articlesCombo = new ComboBox<PartyArticle>(articles);
-        articlesCombo.setConverter(new StringConverter<PartyArticle>() {
+        var articlesCombo = new ComboBox<>(articles);
+        articlesCombo.setConverter(new StringConverter<>() {
             @Override
             public String toString(PartyArticle partyArticle) {
                 return partyArticle == null ? "" : partyArticle.getName();
@@ -144,9 +137,7 @@ public class FfrUi extends Application {
             actionBtns.forEach(button -> button.setDisable(article == null));
             articleStateValueLabel.setText(newText);
         };
-        articlesCombo.valueProperty().addListener((value, oldVal, newVal) -> {
-            updateArticleStateLabel.run();
-        });
+        articlesCombo.valueProperty().addListener((value, oldVal, newVal) -> updateArticleStateLabel.run());
         rootChildren.add(articleStateCont);
 
         HBox actionsCont = new HBox();
