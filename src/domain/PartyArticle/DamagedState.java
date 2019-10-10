@@ -8,26 +8,12 @@ public class DamagedState implements IState {
     }
 
     @Override
-    public void Delete() {
-        System.out.println("je verwijdert je product");
+    public void delete() {
         partyArticle.setState(partyArticle.getDeletedState());
     }
 
     @Override
-    public double Lend() {
-        System.out.println("je kan het niet lenen wanneer het beschadigd is");
-        return 0;
-    }
-
-    @Override
-    public double Return(Boolean b) {
-        System.out.println("je kan niet terugbrengen want het is al terug");
-        return 0;
-    }
-
-    @Override
-    public void Repair() {
-        System.out.println("je repareert");
+    public void repair() {
         partyArticle.setState(partyArticle.getLendableState());
     }
 }

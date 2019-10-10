@@ -1,3 +1,5 @@
+/**
+
 package ui;
 
 import domain.PartyArticle.FunForRent;
@@ -35,34 +37,36 @@ public class UiFunForRent {
     }
 
     private void toonBeschikbaar() {
-        JOptionPane.showMessageDialog(null, this.funForRent.toonBeschikbaar());
+        JOptionPane.showMessageDialog(null, this.funForRent.getLendable());
     }
 
     private void repareer() {
         String name = JOptionPane.showInputDialog("Enter the name of the party item you want to repair");
-        this.funForRent.repareer(name);
+        this.funForRent.repair(name);
     }
 
     private void brengTerug() {
         String name = JOptionPane.showInputDialog("Enter the name of the party item you want to return");
         String damage = JOptionPane.showInputDialog("Is it damaged?");
-        JOptionPane.showMessageDialog(null, this.funForRent.brengTerug(name,damage.equals("1")));
+        JOptionPane.showMessageDialog(null, this.funForRent.bringBack(name,damage.equals("1")));
     }
 
     private void toon() {
         String name = JOptionPane.showInputDialog("Enter the name of the party item you want to rent");
-        JOptionPane.showMessageDialog(null, this.funForRent.leenUit(name));
+        JOptionPane.showMessageDialog(null, this.funForRent.lend(name));
     }
 
     private void remove() {
         String name = JOptionPane.showInputDialog("Enter the name of the party item you want to delete");
-        this.funForRent.verwijder(name);
+        this.funForRent.remove(name);
     }
 
     private void addItem() {
         String name = JOptionPane.showInputDialog("Name of the party item.");
         int price = Integer.parseInt(JOptionPane.showInputDialog("Price of the party item."));
-        this.funForRent.voegToe(name, price);
+        this.funForRent.add(name, price);
     }
 
 }
+
+**/

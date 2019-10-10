@@ -1,55 +1,35 @@
 package domain.PartyArticle;
 
-import domain.PartyArticle.LendableState;
-import domain.PartyArticle.PartyArticle;
+import domain.DomainException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FunForRent {
-
-    private List<PartyArticle> products;
+    private List<PartyArticle> articles;
 
     public FunForRent() {
-        this.products = new ArrayList<>();
+        this.articles = new ArrayList<>();
     }
 
-    public void voegToe(String naam, double prijs) {
-        products.add(new PartyArticle(prijs, naam));
+    public void add(PartyArticle article) {
+        articles.add(article);
     }
 
-    public void verwijder(String name) {
-        get(name).getDamagedState();
+    public void remove(PartyArticle article) {
+        articles.remove(article);
     }
 
-    public double leenUit(String name) {
-        return get(name).getLendableState().Lend();
-    }
-
-    public double brengTerug(String name, boolean damage) {
-        return get(name).getLendedState().Return(damage);
-    }
-
-    public void repareer(String name) {
-        get(name).getDamagedState().Repair();
-    }
-
-    public String toonBeschikbaar() {
-        String res = "";
-        for (PartyArticle product : products) {
-            if (product.getState() instanceof LendableState) {
-                res += product.getNaam() + "\n";
-            }
-        }
-        return res;
+    public List<PartyArticle> getLendable() {
+        return articles.stream().filter(a -> a.getState() instanceof LendableState).collect(Collectors.toList());
     }
 
     private PartyArticle get(String name) {
-        for (PartyArticle p : products) {
-            if (p.getNaam().equals(name)) {
-                return p;
-            }
-        }
-        return null;
+        return articles.stream().filter(a -> a.getName().equals(name)).findFirst().orElse(null);
+    }
+
+    public List<PartyArticle> getAll() {
+        return articles;
     }
 }

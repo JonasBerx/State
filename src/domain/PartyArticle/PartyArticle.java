@@ -1,58 +1,101 @@
 package domain.PartyArticle;
 
+import domain.DomainException;
+import domain.IllegalPaState;
+
 public class PartyArticle {
     private IState DamagedState;
     private IState DeletedState;
     private IState LendableState;
-    private IState LendedState;
+    private IState LentState;
 
-    //  price??
     private double price;
-    private String naam;    //current state
+    private String name;
     private IState state;
-    //int count = 0;
 
 
-    public PartyArticle(double prijs, String naam) {
+    public PartyArticle(String name, double price) throws DomainException {
         DamagedState = new DamagedState(this);
-        DeletedState = new DeletedState(this);
+        DeletedState = new DeletedState();
         LendableState = new LendableState(this);
-        LendedState = new LendedState(this);
+        LentState = new LentState(this);
         this.state = LendableState;
-        this.price = prijs;
-        this.naam = naam;
+        this.setName(name);
+        this.setPrice(price);
     }
 
     public double getPrice() {
         return price;
     }
 
-    public String getNaam() {
-        return naam;
+    private void setPrice(double price) throws DomainException {
+        if (!(price > 0.00))
+            throw new DomainException("<price> must be greater than 0.00");
+
+        this.price = price;
     }
 
-    //   moet nog ergens een return voor de boete prijs
-    public void setState(IState state) {
+    public double getDamageCompensationPrice() {
+        return getPrice() / 3;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    private void setName(String name) throws DomainException {
+        if (name == null)
+            throw new DomainException("<name> must not be null");
+
+        name = name.trim();
+
+        if (name.isEmpty())
+            throw new DomainException("<name> must not be empty");
+
+        this.name = name;
+    }
+
+    public String getStateName() {
+        return this.getState().getName();
+    }
+
+    public void delete() throws IllegalPaState {
+        this.getState().delete();
+    }
+
+    public double lend() throws IllegalPaState {
+        return this.getState().lend();
+    }
+
+    public double bringBack(Boolean damaged) throws IllegalPaState {
+        return this.getState().bringBack(damaged);
+    }
+
+    public void repair() throws IllegalPaState {
+        this.getState().repair();
+    }
+
+    void setState(IState state) {
         this.state = state;
     }
 
-    public IState getDamagedState() {
+    IState getDamagedState() {
         return DamagedState;
     }
 
-    public IState getDeletedState() {
+    IState getDeletedState() {
         return DeletedState;
     }
 
-    public IState getLendableState() {
+    IState getLendableState() {
         return LendableState;
     }
 
-    public IState getLendedState() {
-        return LendedState;
+    IState getLentState() {
+        return LentState;
     }
 
-    public IState getState() {
+    IState getState() {
         return state;
     }
 
